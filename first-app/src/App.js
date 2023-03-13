@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import About from './components/About';
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 function App() {
 
@@ -34,13 +36,20 @@ function App() {
   }
 
 
+
   return (
     <>
+      <Router>
+        <Navbar title="Text Utils" about="About" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <Routes>
+          {/*     switch replaced with Routes  */}
+          <Route exact path="/about" element={<About />} />
 
-      <Navbar title="Text Utils" about="About" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
-      <TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={mode} />
-      {/* <About /> */}
+          <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={mode} />} />
+        </Routes>
+      </Router>
+
     </>
   );
 }
