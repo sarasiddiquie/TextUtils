@@ -44,20 +44,20 @@ export default function TextForm(props) {
                     <textarea className="form-control" id="box" value={text} onChange={handleOnChange} rows="5" style={{ backgroundColor: props.mode === 'dark' ? '#282828' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}> </textarea>
                 </div>
 
-                <button type="button" className="btn btn-success mx-2" onClick={upcaseclick}  >Change to upper case</button>
-                <button type="button" className="btn btn-success mx-2" onClick={locaseclick}  >Change to lower case</button>
-                <button type="button" className="btn btn-success mx-2" onClick={eraselow}  >Clear</button>
-                <button type="button" className="btn btn-success mx-2" onClick={dates}  >Add Date/Time</button>
+                <button type="button" className="btn btn-success mx-2 my-2" onClick={upcaseclick}  >Change to upper case</button>
+                <button type="button" className="btn btn-success mx-2 my-2" onClick={locaseclick}  >Change to lower case</button>
+                <button type="button" className="btn btn-success mx-2 my-2" onClick={eraselow}  >Clear</button>
+                <button type="button" className="btn btn-success mx-2 my-2" onClick={dates}  >Add Date/Time</button>
             </div>
             <br />
 
             <div className="container">
                 <h2>Your text summary here </h2>
                 <p>
-                    Your text has {text.split(" ").length} words and {text.length} characters.
+                    Your text has {text.split(" ").filter((element) => { return element.length !== 0 }).length} words and {text.length} characters.
                 </p>
                 <p>
-                    {0.008 * text.split(" ").length} Minutes Read
+                    {0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length} Minutes Read
                 </p>
             </div>
         </>
