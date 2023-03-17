@@ -21,6 +21,10 @@ export default function Navbar(props) {
               <li className="nav-item">
                 <Link className="nav-link" to="/about">{props.about}</Link>
               </li>
+
+              <li className="nav-item" onClick={props.themeMode}>
+                <button type="button" class="btn btn-outline-info">Theme1</button>
+              </li>
             </ul>
 
             {/* <form className="d-flex">
@@ -32,6 +36,7 @@ export default function Navbar(props) {
               <input className="form-check-input " type="checkbox" onClick={props.toggleMode} role="switch" id="flexSwitchCheckDefault" />
               <label className="form-check-label mx-3" htmlFor="flexSwitchCheckChecked">Change Theme</label>
             </div>
+
 
           </div>
         </div>

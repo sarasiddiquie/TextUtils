@@ -11,6 +11,26 @@ function App() {
   const [alert, setAlert] = useState(null);
   const [theme, setTheme] = useState('light');
 
+  const themeMode = () => {
+
+    let text = document.getElementById("head");
+    let text2 = document.getElementById("head2");
+
+    if (theme === 'light') {
+      setTheme('theme1');
+      document.body.style.backgroundColor = '#04293A';
+      text.style.color = "#ECB365";
+      text2.style.color = "#ECB365";
+    }
+
+    else {
+      setTheme('light');
+      document.body.style.backgroundColor = 'white';
+      text.style.color = "black";
+      text2.style.color = "black";
+    }
+  }
+
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
@@ -40,13 +60,13 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar title="Text Utils" about="About" mode={mode} toggleMode={toggleMode} />
+        <Navbar title="Text Utils" about="About" mode={mode} toggleMode={toggleMode} themeMode={themeMode} />
         <Alert alert={alert} />
         <Routes>
-         // switch replaced with Routes
+
           <Route exact path="/about" element={<About mode={mode} />} />
 
-          <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={mode} />} />
+          <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={mode} themeMode={themeMode} />} />
         </Routes>
       </Router>
 
